@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "Typings and interface definitions for a manager of a list of proxies.",
   "main": "out/index.js",
-  "types" : "out/index.d.ts",
+  "types": "out/index.d.ts",
   "dependencies": {
     "path": "^0.12.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/url-parse": "^1.4.3",
+    "@types/node": "^11.13.6"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --build ./tsconfig.json --watch --pretty",

@@ -32,7 +32,7 @@ export default class IProxyHandler {
 /**
  * Usage:
  * let handler = new IProxyHandler({
- * 	 location: path.join(process.cwd(), `..`, `report.json`),
+ * 	 location: path.join(process.cwd(), `test`, `report.json`),
  * 	 persist: true
  * 	});
  *

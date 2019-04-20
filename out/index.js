@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// import path from "path";
 const fs_1 = __importDefault(require("fs"));
 function flatten() {
     let flat = [];
@@ -94,7 +95,7 @@ exports.default = IProxyHandler;
 /**
  * Usage:
  * let handler = new IProxyHandler({
- * 	 location: path.join(process.cwd(), `..`, `report.json`),
+ * 	 location: path.join(process.cwd(), `test`, `report.json`),
  * 	 persist: true
  * 	});
  *
