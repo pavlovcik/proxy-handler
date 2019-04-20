@@ -1,6 +1,6 @@
 {
   "name": "@pavlovcik/proxy-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typings and interface definitions for a manager of a list of proxies.",
   "main": "out/index.js",
   "types": "out/index.d.ts",
