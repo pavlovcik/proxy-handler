@@ -1,4 +1,3 @@
-// import path from "path";
 import fs from "fs";
 import IParsedURL from "url-parse";
 
@@ -9,18 +8,20 @@ export interface IProxyHandlerInputs {
 }
 
 export interface IPerformance {
+	//	successes.json[performance][x]
 	tested: string; // "Sun Apr 14 2019 15:38:18 GMT-0500 (Central Daylight Time)",
 	ping: number;
 }
 
 export interface IProxy {
+	//	successes.json[x]
 	id: IParsedURL;
 	details: any;
 	origin?: string;
 	performance?: IPerformance;
 }
 
-export interface IProxyList extends Array<IProxy> {}
+export interface IProxyList extends Array<IProxy> {} //	successes.json
 
 function flatten(this: any) {
 	let flat: any = [];
@@ -61,7 +62,7 @@ export class IProxyHandlerDataStore {
 	set location(newName: string | IProxyList) {
 		if (typeof newName === `string`) {
 			try {
-				this._proxies = require(newName).successes; //	.successes?
+				this._proxies = require(newName);
 			} catch (e) {
 				fs.open(newName, `w`, (err, fd) => {
 					if (err) throw err;
@@ -95,9 +96,7 @@ export class IProxyHandlerDataStore {
 
 	constructor(input?: IProxyHandlerInputs) {
 		if (input) {
-			//	Probably can use object mapping for this
 			if (input.location) this.location = input.location; //	Must go first because can throw error when setting persist (persist requires filesystem location)
-			// if (input.persist) this.persist = input.persist;
 			Object.assign(this, ...Object.keys(input).map(k => ({ [k]: input[k] })));
 		}
 		return this;
@@ -110,12 +109,12 @@ module.exports = class IProxyHandler {
 		this.storage = new IProxyHandlerDataStore(input);
 		return this;
 	}
-}
+};
 
 /**
  * Usage:
  * let handler = new IProxyHandler({
- * 	 location: path.join(process.cwd(), `test`, `report.json`),
+ * 	 location: path.join(process.cwd(), `test`, `successes.json`),
  * 	 persist: true
  * 	});
  *

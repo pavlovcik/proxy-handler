@@ -1,0 +1,169 @@
+[{
+        "id": {
+            "slashes": true,
+            "protocol": "socks5:",
+            "hash": "",
+            "query": "",
+            "pathname": "",
+            "auth": "",
+            "host": "31.13.224.12:9999",
+            "port": "9999",
+            "hostname": "31.13.224.12",
+            "password": "",
+            "username": "",
+            "origin": "socks5://31.13.224.12:9999",
+            "href": "socks5://31.13.224.12:9999"
+        },
+        "details": {
+            "anonymityLevel": "elite",
+            "tunnel": {
+                "ok": true
+            },
+            "protocols": {
+                "socks5": {
+                    "ok": true
+                }
+            }
+        }
+    },
+    {
+        "id": {
+            "slashes": true,
+            "protocol": "http:",
+            "hash": "",
+            "query": "",
+            "pathname": "",
+            "auth": "",
+            "host": "200.69.70.238:8080",
+            "port": "8080",
+            "hostname": "200.69.70.238",
+            "password": "",
+            "username": "",
+            "origin": "http://200.69.70.238:8080",
+            "href": "http://200.69.70.238:8080"
+        },
+        "details": {
+            "anonymityLevel": "transparent",
+            "tunnel": {
+                "ok": true
+            },
+            "protocols": {
+                "http": {
+                    "ok": true
+                }
+            }
+        }
+    },
+    {
+        "id": {
+            "slashes": true,
+            "protocol": "http:",
+            "hash": "",
+            "query": "",
+            "pathname": "",
+            "auth": "",
+            "host": "189.58.100.98:8080",
+            "port": "8080",
+            "hostname": "189.58.100.98",
+            "password": "",
+            "username": "",
+            "origin": "http://189.58.100.98:8080",
+            "href": "http://189.58.100.98:8080"
+        },
+        "details": {
+            "anonymityLevel": "transparent",
+            "tunnel": {
+                "ok": true
+            },
+            "protocols": {
+                "http": {
+                    "ok": true
+                }
+            }
+        }
+    },
+    {
+        "id": {
+            "slashes": true,
+            "protocol": "socks5:",
+            "hash": "",
+            "query": "",
+            "pathname": "",
+            "auth": "",
+            "host": "103.251.225.16:6667",
+            "port": "6667",
+            "hostname": "103.251.225.16",
+            "password": "",
+            "username": "",
+            "origin": "socks5://103.251.225.16:6667",
+            "href": "socks5://103.251.225.16:6667"
+        },
+        "details": {
+            "anonymityLevel": "elite",
+            "tunnel": {
+                "ok": true
+            },
+            "protocols": {
+                "socks5": {
+                    "ok": true
+                }
+            }
+        }
+    },
+    {
+        "id": {
+            "slashes": true,
+            "protocol": "http:",
+            "hash": "",
+            "query": "",
+            "pathname": "",
+            "auth": "",
+            "host": "192.99.207.23:40067",
+            "port": "40067",
+            "hostname": "192.99.207.23",
+            "password": "",
+            "username": "",
+            "origin": "http://192.99.207.23:40067",
+            "href": "http://192.99.207.23:40067"
+        },
+        "details": {
+            "anonymityLevel": "elite",
+            "tunnel": {
+                "ok": true
+            },
+            "protocols": {
+                "http": {
+                    "ok": true
+                }
+            }
+        }
+    },
+    {
+        "id": {
+            "slashes": true,
+            "protocol": "socks5:",
+            "hash": "",
+            "query": "",
+            "pathname": "",
+            "auth": "",
+            "host": "88.85.110.86:9999",
+            "port": "9999",
+            "hostname": "88.85.110.86",
+            "password": "",
+            "username": "",
+            "origin": "socks5://88.85.110.86:9999",
+            "href": "socks5://88.85.110.86:9999"
+        },
+        "details": {
+            "anonymityLevel": "elite",
+            "tunnel": {
+                "ok": true
+            },
+            "protocols": {
+                "socks5": {
+                    "ok": true
+                }
+            }
+        }
+    }
+]
