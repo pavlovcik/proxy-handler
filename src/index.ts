@@ -104,7 +104,7 @@ export class IProxyHandlerDataStore {
 	}
 }
 
-export default class IProxyHandler {
+module.exports = class IProxyHandler {
 	storage: IProxyHandlerDataStore;
 	constructor(input?: IProxyHandlerInputs) {
 		this.storage = new IProxyHandlerDataStore(input);
