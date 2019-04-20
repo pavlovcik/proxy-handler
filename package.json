@@ -22,5 +22,6 @@
     "TypeScript"
   ],
   "author": "Alexander Pavlovcik <alexander@pavlovcik.com>",
+  "repository": "pavlovcik/proxy-handler",
   "license": "ISC"
 }
