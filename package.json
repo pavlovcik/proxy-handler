@@ -12,6 +12,7 @@
     "@types/node": "^11.13.6"
   },
   "scripts": {
+    "patch": "git commit -am \"Patch\" && npm version patch && git push && npm publish --access=public",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --build ./tsconfig.json",
     "run": "node ."

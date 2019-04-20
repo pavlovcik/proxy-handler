@@ -25,14 +25,10 @@ export declare class IProxyHandlerDataStore {
     proxies: any;
     constructor(input?: IProxyHandlerInputs);
 }
-export default class IProxyHandler {
-    storage: IProxyHandlerDataStore;
-    constructor(input?: IProxyHandlerInputs);
-}
 /**
  * Usage:
  * let handler = new IProxyHandler({
- * 	 location: path.join(process.cwd(), `test`, `report.json`),
+ * 	 location: path.join(process.cwd(), `test`, `successes.json`),
  * 	 persist: true
  * 	});
  *
@@ -43,5 +39,5 @@ export default class IProxyHandler {
  * 	// console.log(handler.storage.proxies);
  * 	// console.log(handler.storage.proxies.flattened());
  *
- **/ 
+ **/
 //# sourceMappingURL=index.d.ts.map

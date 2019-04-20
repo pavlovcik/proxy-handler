@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// import path from "path";
 const fs_1 = __importDefault(require("fs"));
 function flatten() {
     let flat = [];
@@ -22,10 +21,8 @@ class IProxyHandlerDataStore {
         this._persist = false; //	Write/overwrite to disk
         this._proxies = { flattened: flatten }; //	flattened method is on the prototype because it is added whenever the proxies are requested.
         if (input) {
-            //	Probably can use object mapping for this
             if (input.location)
                 this.location = input.location; //	Must go first because can throw error when setting persist (persist requires filesystem location)
-            // if (input.persist) this.persist = input.persist;
             Object.assign(this, ...Object.keys(input).map(k => ({ [k]: input[k] })));
         }
         return this;
@@ -49,7 +46,7 @@ class IProxyHandlerDataStore {
     set location(newName) {
         if (typeof newName === `string`) {
             try {
-                this._proxies = require(newName).successes; //	.successes?
+                this._proxies = require(newName);
             }
             catch (e) {
                 fs_1.default.open(newName, `w`, (err, fd) => {
@@ -85,17 +82,16 @@ class IProxyHandlerDataStore {
     }
 }
 exports.IProxyHandlerDataStore = IProxyHandlerDataStore;
-class IProxyHandler {
+module.exports = class IProxyHandler {
     constructor(input) {
         this.storage = new IProxyHandlerDataStore(input);
         return this;
     }
-}
-exports.default = IProxyHandler;
+};
 /**
  * Usage:
  * let handler = new IProxyHandler({
- * 	 location: path.join(process.cwd(), `test`, `report.json`),
+ * 	 location: path.join(process.cwd(), `test`, `successes.json`),
  * 	 persist: true
  * 	});
  *
@@ -106,5 +102,5 @@ exports.default = IProxyHandler;
  * 	// console.log(handler.storage.proxies);
  * 	// console.log(handler.storage.proxies.flattened());
  *
- **/ 
+ **/
 //# sourceMappingURL=index.js.map
