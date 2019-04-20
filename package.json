@@ -1,7 +1,7 @@
 {
   "name": "proxy-handler",
   "version": "1.0.0",
-  "description": "Typings and interface definitions to manage proxies.",
+  "description": "Typings and interface definitions for a manager of a list of proxies.",
   "main": "out/index.js",
   "types" : "out/index.d.ts",
   "dependencies": {
@@ -15,6 +15,7 @@
   },
   "keywords": [
     "Proxy",
+    "Proxies",
     "TypeScript"
   ],
   "author": "Alexander Pavlovcik <alexander@pavlovcik.com>",
