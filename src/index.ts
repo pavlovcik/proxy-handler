@@ -3,7 +3,7 @@ import IParsedURL from "url-parse";
 
 export interface IProxyHandlerInputs {
 	[key: string]: any;
-	location?: string;
+	location?: string | IProxyList;
 	persist?: boolean;
 }
 
@@ -36,6 +36,7 @@ export class ProxyHandlerDataStore {
 	private _location: string | IProxyList = []; //	Automatically store in memory unless persist and location is set
 	private _persist: boolean = false; //	Write/overwrite to disk
 	private _proxies: any = { flattened: flatten }; //	flattened method is on the prototype because it is added whenever the proxies are requested.
+	// _proxies is not actually of type "any" it is an array with a special "flattened" method. TODO: figure out interface declaration for this.
 
 	get persist(): boolean {
 		return this._persist;
@@ -53,34 +54,65 @@ export class ProxyHandlerDataStore {
 	set persist(persistence: boolean) {
 		if (!this._location) {
 			throw new Error(
-				`ProxyHandler storage "location" must be set before "persistence" can be enabled.`
+				`ProxyHandler storage "location" must be set before "persist" can be enabled.`
 			);
 		}
 		this._persist = persistence;
 	}
 
 	set location(newName: string | IProxyList) {
+		/**
+		 * This can accept either a string representing a filename
+		 * to save out to, or, an array of proxies which will automatically
+		 * be stored in this._proxies, where it belongs.
+		 *
+		 * This allows the user to be flexible by allowing this module to
+		 * temporarily hold on to (and not forget) about a proxy list
+		 * moving it along to where it belongs and then later allowing
+		 * the user to set a filepath location at their convenience in
+		 * order to enable persistence.
+		 *
+		 */
 		if (typeof newName === `string`) {
+			/**
+			 * This TRY/CATCH block needs to be thoroughly tested
+			 * Because it needs to know how to juggle the filename or
+			 * the array that was passed in, while making sure
+			 * that the file it will be writing to is accessible and not corrupted.
+			 *
+			 * If corrupted, initialize with empty array.
+			 * If readable, check that it is an array and then load into memory.
+			 * If not an array, throw an error.
+			 */
+
+			this._location = newName;
+
 			try {
-				this._proxies = require(newName);
+				let fromDisk = require(newName);
+				if (!Array.isArray(fromDisk)) {
+					//	File contents must be an array.
+					throw new Error(`Datastorage is expected to be an array of proxies!`);
+				} else {
+					this._proxies = fromDisk; //	Success
+				}
 			} catch (e) {
-				fs.open(newName, `w`, (err, fd) => {
-					if (err) throw err;
-					fs.close(fd, err => {
-						if (err) throw err;
-					});
-				});
+				console.error(e);
+				if (this._persist) {
+					//	Initialize a new proxy list (array) on disk.
+					fs.writeFileSync(newName, `[]`, `UTF-8`);
+				}
 			}
 		} else if (Array.isArray(newName)) {
-			this._proxies = newName;
+			this._proxies = newName; //	Temporarily hold on to the array of proxies
 		} else if (typeof newName === `object`) {
-			//	Unhandled
+			throw new Error(
+				`Datastorage is expected to be an array of proxies, not an object!`
+			);
 		} else {
 			throw new Error(
 				`Datastorage must be a filename (on disk) or an array (in memory)!`
 			);
 		}
-		this._location = newName;
 	}
 
 	set proxies(input: any) {
@@ -92,6 +124,7 @@ export class ProxyHandlerDataStore {
 			}
 		}
 		this._proxies = input;
+		this._proxies.flattened = flatten;
 	}
 
 	constructor(input?: IProxyHandlerInputs) {

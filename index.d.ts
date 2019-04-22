@@ -1,7 +1,7 @@
 import IParsedURL from "url-parse";
 export interface IProxyHandlerInputs {
     [key: string]: any;
-    location?: string;
+    location?: string | IProxyList;
     persist?: boolean;
 }
 export interface IPerformance {
