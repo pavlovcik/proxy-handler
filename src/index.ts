@@ -110,19 +110,3 @@ export class ProxyHandler {
 }
 
 export default ProxyHandler;
-
-/**
- * Usage:
- * let handler = new IProxyHandler({
- * 	 location: path.join(process.cwd(), `test`, `successes.json`),
- * 	 persist: true
- * 	});
- *
- * 	console.log();
- * 	console.log(handler);
- * 	console.log();
- *
- * 	// console.log(handler.storage.proxies);
- * 	// console.log(handler.storage.proxies.flattened());
- *
- **/
