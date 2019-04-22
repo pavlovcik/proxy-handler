@@ -99,17 +99,13 @@ export class ProxyHandlerDataStore {
 			if (input.location) this.location = input.location; //	Must go first because can throw error when setting persist (persist requires filesystem location)
 			Object.assign(this, ...Object.keys(input).map(k => ({ [k]: input[k] })));
 		}
-		// return this;
 	}
 }
-
-// const _ProxyHandler =
 
 export class ProxyHandler {
 	storage: ProxyHandlerDataStore;
 	constructor(input?: IProxyHandlerInputs) {
 		this.storage = new ProxyHandlerDataStore(input);
-		// return this;
 	}
 }
 
