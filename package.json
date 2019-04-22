@@ -12,9 +12,10 @@
     "@types/node": "^11.13.6"
   },
   "scripts": {
-    "patch": "git commit -am \"Prepatch\" && npm version patch && git push && npm publish --access=public",
+    "quickpatch": "git commit -am \"Prepatch\" && npm version patch && git push && npm publish --access=public",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --build ./tsconfig.json",
+    "watch": "tsc --build ./tsconfig.json --watch --pretty",
     "run": "node ."
   },
   "keywords": [
@@ -23,6 +24,9 @@
     "TypeScript"
   ],
   "author": "Alexander Pavlovcik <alexander@pavlovcik.com>",
-  "repository": "pavlovcik/proxy-handler",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavlovcik/proxy-handler.git"
+  },
   "license": "ISC"
 }
