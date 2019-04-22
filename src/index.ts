@@ -32,7 +32,7 @@ function flatten(this: any) {
 	return flat;
 }
 
-export class IProxyHandlerDataStore {
+export class ProxyHandlerDataStore {
 	private _location: string | IProxyList = []; //	Automatically store in memory unless persist and location is set
 	private _persist: boolean = false; //	Write/overwrite to disk
 	private _proxies: any = { flattened: flatten }; //	flattened method is on the prototype because it is added whenever the proxies are requested.
@@ -99,17 +99,21 @@ export class IProxyHandlerDataStore {
 			if (input.location) this.location = input.location; //	Must go first because can throw error when setting persist (persist requires filesystem location)
 			Object.assign(this, ...Object.keys(input).map(k => ({ [k]: input[k] })));
 		}
-		return this;
+		// return this;
 	}
 }
 
-module.exports = class IProxyHandler {
-	storage: IProxyHandlerDataStore;
+// const _ProxyHandler =
+
+export class ProxyHandler {
+	storage: ProxyHandlerDataStore;
 	constructor(input?: IProxyHandlerInputs) {
-		this.storage = new IProxyHandlerDataStore(input);
-		return this;
+		this.storage = new ProxyHandlerDataStore(input);
+		// return this;
 	}
-};
+}
+
+export default ProxyHandler;
 
 /**
  * Usage:
