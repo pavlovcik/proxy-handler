@@ -8,8 +8,17 @@ function flatten() {
     let flat = [];
     if (Array.isArray(this)) {
         let x = this.length;
-        while (x--)
-            flat.push(this[x].id.href);
+        while (x--) {
+            if (this[x].id) {
+                if (this[x].id.href) {
+                    flat.push(this[x].id.href);
+                }
+                else
+                    throw new Error(`No "href" property found on ${this[x].id}`);
+            }
+            else
+                throw new Error(`No "id" property found on ${this[x]}`);
+        }
     }
     else
         flat = this;
@@ -105,7 +114,7 @@ class ProxyHandlerDataStore {
             }
         }
         this._proxies = input;
-        this._proxies.flattened = flatten;
+        // this._proxies.flattened = flatten;	//	May be redundant TODO figure out if should place on GET or SET
     }
 }
 exports.ProxyHandlerDataStore = ProxyHandlerDataStore;
