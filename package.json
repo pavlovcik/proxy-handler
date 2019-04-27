@@ -29,7 +29,7 @@
     "Proxies",
     "TypeScript"
   ],
-  "author": "Alexander Pavlovcik <alexander@pavlovcik.com>",
+  "author": "Alexander Pavlovcik <proxyhandler@pavlovcik.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pavlovcik/proxy-handler.git"
